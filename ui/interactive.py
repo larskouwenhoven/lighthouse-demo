@@ -142,7 +142,7 @@ zcta_gdf[zcta_gdf.vehicle_own_rate < 0.5].plot(column='vehicle_own_rate', ax=ax,
 fig.patch.set_facecolor('white')
 fig.patch.set_alpha(0.0001)
 
-legend = plt.legend()
-plt.setp(legend.get_texts(), color='w')
+legend = ax.legend()
+ax.setp(legend.get_texts(), color='w')
 
 st.pyplot(fig)
