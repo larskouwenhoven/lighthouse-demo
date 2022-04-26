@@ -5,8 +5,15 @@ import numpy as np
 import random
 import pandas as pd
 import pathlib
+import os
 
-nta2 = gpd.read_file(pathlib.Path("../NTA_ACS_2014_2018.gdb"))
+dir_name = os.path.abspath(os.path.dirname(__file__))
+location = os.path.join(dir_name, '../NTA_ACS_2014_2018.gdb')
+
+print(dir_name)
+print(location)
+
+nta2 = gpd.read_file(location)
 nta = nta2
 
 for index, row in nta.iterrows():  
