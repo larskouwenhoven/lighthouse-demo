@@ -4,6 +4,7 @@ import matplotlib.pyplot as plt
 import numpy as np
 import random
 import pandas as pd
+import pathlib
 
 nta2 = gpd.read_file(pathlib.Path("../NTA_ACS_2014_2018.gdb"))
 nta = nta2
