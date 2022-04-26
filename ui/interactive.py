@@ -111,4 +111,34 @@ st.write("Even in mandatory evacuation areas; during hurricane Sandy, only 40% o
 
 st.header("Vehicle ownership")
 
-st.write("One points that renders New York City unique within an American context, is the low vehicle ownership rate. On average, some 40$ of the population own a car, but this number is as low as 8% is some areas in Manhattan. The lack of car ownership often makes evacuations more challenging. At the same time, many of those who **do** evacuate using their own vehicle have many empty seats. There is thus an opportunity to more equitably distribute resources here. The map below shows the car ownership rates of different areas in New York City. ")
+st.write("One point that renders New York City unique within an American context, is the low vehicle ownership rate. On average, some 40% of the population own a car, but this number is as low as 8% is some areas in Manhattan. The lack of car ownership often makes evacuations more challenging. At the same time, many of those who **do** evacuate using their own vehicle have many empty seats. There is thus an opportunity to more equitably distribute resources here. The map below shows the car ownership rates of different areas in New York City. ")
+
+vehicle_path = os.path.join(dir_name, "../ACSDP5Y2020.DP04_2022-04-22T145843/ACSDP5Y2020.DP04_data_with_overlays_2022-04-22T145824.csv")
+
+vehicle_df = pd.read_csv(vehicle_path, header=1)
+veh_available_cols = [
+    'Estimate!!VEHICLES AVAILABLE!!Occupied housing units!!1 vehicle available',
+    'Estimate!!VEHICLES AVAILABLE!!Occupied housing units!!2 vehicles available',
+    'Estimate!!VEHICLES AVAILABLE!!Occupied housing units!!3 or more vehicles available'
+]
+vehicle_df['total_households_vehicle'] = vehicle_df[veh_available_cols].sum(axis=1)
+vehicle_df['ZIP'] = vehicle_df['Geographic Area Name'].str.strip("ZCTA5 ")
+
+zcta_path = os.path.join(dir_name, "../Modified Zip Code Tabulation Areas (MODZCTA)")
+
+zcta_gdf = gpd.read_file(zcta_path)
+zcta_gdf['total_vehicles'] = 0
+zcta_gdf = zcta_gdf.merge(vehicle_df[['total_households_vehicle', 'ZIP']], left_on='modzcta', right_on='ZIP', how='left')
+zcta_gdf.loc[zcta_gdf.total_households_vehicle.isna(), 'total_households_vehicle'] = zcta_gdf.total_households_vehicle.mean()
+zcta_gdf['vehicle_own_rate'] = zcta_gdf.total_households_vehicle / zcta_gdf.pop_est
+zcta_gdf = zcta_gdf[:177]
+
+fig, ax = plt.subplots(figsize=(10,10))
+
+ax.axis("off")
+
+zcta_gdf[zcta_gdf.vehicle_own_rate < 0.5].plot(column='vehicle_own_rate', ax=ax, legend=True, )
+
+ax.set_title("Vehicle ownership rate")
+
+st.pyplot(fig)
