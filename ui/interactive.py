@@ -146,3 +146,10 @@ fig.patch.set_alpha(0.0001)
 # ax.setp(legend.get_texts(), color='w')
 
 st.pyplot(fig)
+
+st.header("Simulating users")
+
+nta['population'] = nta.pop_2E
+total_population = round(nta['population'].sum())
+
+st.write("The total population of NYC is 8,443,713. In our pessimistic scenario, we would have 8,444 users. In our realistic scenario, we would have 422,186. Finally, in our optimistic scenario, we would have 1,266,557 users. We will now examine how these different scenarios affect the effectiveness of Lighthouse-guided evacuations. ")
