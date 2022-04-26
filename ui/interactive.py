@@ -107,4 +107,5 @@ else:
     fig.patch.set_alpha(0.0001)
     st.pyplot(fig)
 
+st.write("Even in mandatory evacuation areas; during hurricane Sandy, only 40% of the population evacuated. In the case of area where there was no evacuation order, this number was just over 10%. For now, we will assume **15% of people in affected areas evacuate**. We will also devise different scenarios for Lighthouse adoption rates. In a pessimistic scenario, 0.1% of citizens will use Lighthouse. In a realistic scenario, we will find an adoption rate of 5%. In a optimistic scenario, 15% of NYC residents will adopt Lighthouse. ")
 
