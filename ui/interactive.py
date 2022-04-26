@@ -137,12 +137,12 @@ fig, ax = plt.subplots(figsize=(10,10))
 
 ax.axis("off")
 
-zcta_gdf[zcta_gdf.vehicle_own_rate < 0.5].plot(column='vehicle_own_rate', ax=ax, legend=True, )
+zcta_gdf[zcta_gdf.vehicle_own_rate < 0.5].plot(column='vehicle_own_rate', ax=ax, legend=False, cmap='OrRd')
 
 fig.patch.set_facecolor('white')
 fig.patch.set_alpha(0.0001)
 
-legend = ax.legend()
-ax.setp(legend.get_texts(), color='w')
+# legend = ax.legend()
+# ax.setp(legend.get_texts(), color='w')
 
 st.pyplot(fig)
