@@ -109,3 +109,6 @@ else:
 
 st.write("Even in mandatory evacuation areas; during hurricane Sandy, only 40% of the population evacuated. In the case of area where there was no evacuation order, this number was just over 10%. For now, we will assume **15% of people in affected areas evacuate**. We will also devise different scenarios for Lighthouse adoption rates. In a pessimistic scenario, 0.1% of citizens will use Lighthouse. In a realistic scenario, we will find an adoption rate of 5%. In a optimistic scenario, 15% of NYC residents will adopt Lighthouse. ")
 
+st.header("Vehicle ownership")
+
+st.write("One points that renders New York City unique within an American context, is the low vehicle ownership rate. On average, some 40$ of the population own a car, but this number is as low as 8% is some areas in Manhattan. The lack of car ownership often makes evacuations more challenging. At the same time, many of those who **do** evacuate using their own vehicle have many empty seats. There is thus an opportunity to more equitably distribute resources here. The map below shows the car ownership rates of different areas in New York City. ")
