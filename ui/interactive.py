@@ -139,6 +139,7 @@ ax.axis("off")
 
 zcta_gdf[zcta_gdf.vehicle_own_rate < 0.5].plot(column='vehicle_own_rate', ax=ax, legend=True, )
 
-ax.set_title("Vehicle ownership rate")
+fig.patch.set_facecolor('white')
+fig.patch.set_alpha(0.0001)
 
 st.pyplot(fig)
