@@ -8,6 +8,7 @@ import pathlib
 import os
 from PIL import Image
 
+dir_name = os.path.abspath(os.path.dirname(__file__))
 
 st.title('Lighthouse Technical Demo')
 
@@ -19,9 +20,9 @@ st.write(intro_text_2)
 
 scenario = st.selectbox("Select a scenario", ['Scenario 1', 'Scenario 2', 'Scenario 3'])
 
-sc1_image = Image.open("sc1.png")
-sc2_image = Image.open("sc2.png")
-sc3_image = Image.open("sc3.png")
+sc1_image = Image.open(os.path.join(dir_name, "sc1.png"))
+sc2_image = Image.open(os.path.join(dir_name,"sc2.png"))
+sc3_image = Image.open(os.path.join(dir_name,"sc3.png"))
 
 if scenario == 'Scenario 1':
     st.image(sc1_image, caption="Evacuation zones 1 and 2")
@@ -36,7 +37,7 @@ challenge_text = "One challenge that Lighthouse intends to overcome is the fact 
 challenge_text_2 = "Lighthouse aims to increase the share of people that are ordered to evacuate, and actually do so, and decrease the number of people that evacuate, even though they are not in an evacuation zone. The behavior of these people can have adverse effects, as they may take up valuable road space, leading to traffic jams and hindering the evacuation process of others. "
 
 st.write(challenge_text)
-table_img = Image.open('table.png')
+table_img = Image.open(os.path.join(dir_name, 'table.png'))
 
 col11, col21, col31= st.columns(3)
 
@@ -53,7 +54,7 @@ veh_text_2 = "While car ownership is relatively low, many of the people evacuati
 st.write(veh_text)
 
 # car ownership map
-veh_image = Image.open('vehicle_ownership.png')
+veh_image = Image.open(os.path.join(dir_name,'vehicle_ownership.png'))
 st.image(veh_image, caption="Vehicle ownership rates in NYC")
 
 st.write(veh_text_2)
@@ -115,9 +116,9 @@ map_text = "Lighthouse also provides an algorithm to efficiently route users. Wh
 st.write(map_text)
 
 
-rs_img_1 = Image.open("routes_merged1_pessimistic.png")
-rs_img_2 = Image.open("routes_merged2_pessimistic.png")
-rs_img_3 = Image.open("routes_merged3_pessimistic.png")
+rs_img_1 = Image.open(os.path.join(dir_name,"routes_merged1_pessimistic.png"))
+rs_img_2 = Image.open(os.path.join(dir_name,"routes_merged2_pessimistic.png"))
+rs_img_3 = Image.open(os.path.join(dir_name,"routes_merged3_pessimistic.png"))
 
 scenario_3 = st.selectbox("Select a scenario: ", ['Scenario 1', 'Scenario 2', 'Scenario 3'])
 
