@@ -2,3 +2,6 @@ geopandas
 numpy
 matplotlib
 pandas
+geopy
+osmnx
+folium
