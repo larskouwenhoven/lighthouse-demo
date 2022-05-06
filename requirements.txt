@@ -4,3 +4,4 @@ matplotlib
 pandas
 geopy
 osmnx
+folium
