@@ -17,15 +17,21 @@ import folium
 
 dir_name = os.path.abspath(os.path.dirname(__file__))
 
-nta = gpd.read_file("../NTA_ACS_2014_2018.gdb")
+nta_path = os.path.join(dir_name, "../NTA_ACS_2014_2018.gdb")
+hec_path = os.path.join(dir_name, "../Hurricane Evacuation Centers")
+g_path = os.path.join(dir_name, '../graph.graphml')
+
+print(nta_path)
+
+nta = gpd.read_file(nta_path)
 nta = nta.to_crs("EPSG:4326")
 print(nta.crs)
-hec = gpd.read_file("../Hurricane Evacuation Centers")
+hec = gpd.read_file(hec_path)
 hec = hec.to_crs(nta.crs)
 print(hec.crs)
 
 if 'G' not in st.session_state:
-    st.session_state.G = ox.load_graphml('../graph.graphml')
+    st.session_state.G = ox.load_graphml(g_path)
 
 G = st.session_state.G
 
