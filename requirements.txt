@@ -2,3 +2,4 @@ geopandas
 numpy
 matplotlib
 pandas
+geopy
